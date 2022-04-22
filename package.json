@@ -5,9 +5,12 @@
     "dist"
   ],
   "types": "dist/index.d.ts",
-  "name": "my-library",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@arifdroid/sample-rollup-react",
+  "version": "0.1.1",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/arifdroid"
+  },
+  "private": false,
   "dependencies": {
     "@babel/runtime": "^7.17.9",
     "@testing-library/jest-dom": "^5.16.4",
@@ -71,4 +74,5 @@
   "peerDependencies": {
     "react": "^18.0.0"
   }
+  
 }

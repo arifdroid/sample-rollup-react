@@ -12,7 +12,7 @@ import css from "rollup-plugin-import-css";
 
 export default [
   {
-    input: "src/components/index.js",
+    input: "src/components/index.ts",
     output: [
       {
         file: packageJson.main,
@@ -36,5 +36,12 @@ export default [
       typescript({ tsconfig: "./tsconfig.json" }),
       css()
     ],
+  },
+  {
+    input: "dist/esm/types/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    plugins: [dts()],
+    external: [/\.css$/],
+
   },
 ];
