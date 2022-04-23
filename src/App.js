@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Button from './components/button/Button';
-
+import { Button } from './components'
 function App() {
   return (
     <div className="App">
@@ -17,9 +16,9 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        
+
         </a>
-        {/* <Button>Button</Button> */}
+        <Button>Button</Button>
       </header>
     </div>
   );
