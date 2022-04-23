@@ -2799,9 +2799,39 @@ if (process.env.NODE_ENV === 'production') {
 
 var React = react.exports;
 
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".button{\n  background-color: rgb(255, 221, 0);\n  border: solid 1px rgb(255, 221, 0);\n  border-radius: 8px;\n  height: 38px;\n  width: 112px;\n  font-family: \"Rubik\", sans-serif;\n  color: rgb(14, 27, 66);\n  text-align: center;\n  font-size: 14px;\n  font-weight: 900;\n\n  text-decoration: none;\n  display: inline-block;\n  cursor: pointer;\n}";
+styleInject(css_248z);
+
 var Button = function Button(props) {
   return /*#__PURE__*/React.createElement("button", __assign({
-    className: "button"
+    className: 'button'
   }, props));
 };
 

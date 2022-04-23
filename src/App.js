@@ -18,7 +18,7 @@ function App() {
           Learn React
 
         </a>
-        <Button>Button</Button>
+        <Button>Button Library</Button>
       </header>
     </div>
   );

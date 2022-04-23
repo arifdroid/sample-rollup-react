@@ -6,7 +6,7 @@
   ],
   "types": "dist/index.d.ts",
   "name": "@arifdroid/sample-rollup-react",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/arifdroid"
   },
@@ -18,6 +18,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.1",
+    "rollup-plugin-sass": "^1.2.12",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
