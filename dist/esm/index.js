@@ -3345,9 +3345,9 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
       _props$disable = props.disable,
       disable = _props$disable === void 0 ? false : _props$disable,
       toggle = props.toggle,
-      theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]);
+      theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]); // let buttonMoleculeRef = useSyncRefs(ref)
 
-  var buttonMoleculeRef = useSyncRefs(ref);
+
   var reducerBag = React.useReducer(reducer, {
     isLoading: isLoading,
     disable: disable,
@@ -3382,7 +3382,7 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
     });
   }, [toggle]);
   var ourProps = {
-    ref: buttonMoleculeRef,
+    // ref: buttonMoleculeRef,
     disabled: props.disabled ? props.disabled : state.disable,
     style: state.disable ? Object.assign(Object.assign({}, props.style), {
       opacity: 0.6
