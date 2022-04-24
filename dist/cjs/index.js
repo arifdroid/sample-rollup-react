@@ -3297,7 +3297,7 @@ var ActionTypes;
   ActionTypes[ActionTypes["SetToggle"] = 2] = "SetToggle";
 })(ActionTypes || (ActionTypes = {}));
 
-var reducer$1 = function reducer(state, action) {
+var reducer = function reducer(state, action) {
   return match(action.type, reducers, state, action);
 };
 
@@ -3352,7 +3352,7 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
       theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]);
 
   var buttonMoleculeRef = useSyncRefs(ref);
-  var reducerBag = React.useReducer(reducer$1, {
+  var reducerBag = React.useReducer(reducer, {
     isLoading: isLoading,
     disable: disable,
     toggle: false,
@@ -3460,33 +3460,28 @@ var ButtonMolecule = Object.assign(ButtonRoot, {
   Icon: Icon
 });
 
-var ACTIONS = {
-  INCREMENT: 'increment',
-  DECREMENT: 'decrement'
-};
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'increment':
-      return Object.assign(Object.assign({}, state), {
-        count: state.count + 1
-      });
-
-    case 'decrement':
-      return Object.assign(Object.assign({}, state), {
-        count: state.count - 1
-      });
-  }
-}
-
 var SampleMolecule = /*#__PURE__*/react.exports.forwardRef(function (props, ref) {
-  var _useState = react.exports.useState(''),
-      _useState2 = _slicedToArray(_useState, 2);
-      _useState2[0];
-      _useState2[1];
+  var ACTIONS = {
+    INCREMENT: 'increment',
+    DECREMENT: 'decrement'
+  };
+
+  function reducer(state, action) {
+    switch (action.type) {
+      case 'increment':
+        return Object.assign(Object.assign({}, state), {
+          count: state.count + 1
+        });
+
+      case 'decrement':
+        return Object.assign(Object.assign({}, state), {
+          count: state.count - 1
+        });
+    }
+  }
 
   var _useReducer = react.exports.useReducer(reducer, {
-    count: 0
+    count: 1
   }),
       _useReducer2 = _slicedToArray(_useReducer, 2),
       state = _useReducer2[0],
