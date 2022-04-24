@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import styles from './Button.module.scss';
 import '../../index.css';
 
 const Button = (props:any) => {
+
+  const [state, setState] = useState('');
 
   const { name, id, item, error, managedCallback, } = props;
   const { action, label } = item || { label: 'Default' };
