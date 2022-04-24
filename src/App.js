@@ -16,11 +16,11 @@ function App() {
         >
 
         </a>
-        {/* <Button>Button Library</Button> */}
-        {/* <HButton>
+        <Button>Button Library</Button>
+        <HButton>
           <HButton.Label >Label 2 </HButton.Label>
           <HButton.Icon></HButton.Icon>
-        </HButton> */}
+        </HButton>
         <HSample/>
       </header>
     </div>
