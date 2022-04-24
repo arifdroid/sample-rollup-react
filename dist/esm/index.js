@@ -1,29 +1,3 @@
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-var __assign = function() {
-    __assign = Object.assign || function __assign(t) {
-        for (var s, i = 1, n = arguments.length; i < n; i++) {
-            s = arguments[i];
-            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p)) t[p] = s[p];
-        }
-        return t;
-    };
-    return __assign.apply(this, arguments);
-};
-
 var react = {exports: {}};
 
 var react_production_min = {};
@@ -2840,19 +2814,19 @@ var Button = function Button(props) {
       error = props.error,
       managedCallback = props.managedCallback;
 
-  var _a = item || {
+  var _ref = item || {
     label: 'Default'
   },
-      action = _a.action,
-      label = _a.label;
+      action = _ref.action,
+      label = _ref.label;
 
   var onClick = function onClick() {
     return managedCallback(action === null || action === void 0 ? void 0 : action.actionURL);
   };
 
-  var disabled = error && Object.keys(error).length > 0 || false;
+  var disabled = error && Object.keys(error).length > 0 || (props === null || props === void 0 ? void 0 : props.disabled);
   var className = disabled ? styles['button-disabled'] : styles['button'];
-  return /*#__PURE__*/React.createElement("button", __assign({
+  return /*#__PURE__*/React.createElement("button", Object.assign({
     name: name,
     id: id,
     className: className,
@@ -2861,5 +2835,626 @@ var Button = function Button(props) {
   }, props), label);
 };
 
-export { Button };
+function _arrayWithHoles(arr) {
+  if (Array.isArray(arr)) return arr;
+}
+
+function _iterableToArrayLimit(arr, i) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+
+  if (_i == null) return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+
+  var _s, _e;
+
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+
+      if (i && _arr.length === i) break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null) _i["return"]();
+    } finally {
+      if (_d) throw _e;
+    }
+  }
+
+  return _arr;
+}
+
+function _arrayLikeToArray$2(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+
+  for (var i = 0, arr2 = new Array(len); i < len; i++) {
+    arr2[i] = arr[i];
+  }
+
+  return arr2;
+}
+
+function _unsupportedIterableToArray$2(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray$2(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$2(o, minLen);
+}
+
+function _nonIterableRest() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+
+function _slicedToArray(arr, i) {
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray$2(arr, i) || _nonIterableRest();
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+
+function __rest(s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+}
+
+var useIsoMorphicEffect = typeof window !== 'undefined' ? react.exports.useLayoutEffect : react.exports.useEffect;
+
+var state = {
+  serverHandoffComplete: false
+};
+function useServerHandoffComplete() {
+  var _useState = react.exports.useState(state.serverHandoffComplete),
+      _useState2 = _slicedToArray(_useState, 2),
+      serverHandoffComplete = _useState2[0],
+      setServerHandoffComplete = _useState2[1];
+
+  react.exports.useEffect(function () {
+    if (serverHandoffComplete === true) return;
+    setServerHandoffComplete(true);
+  }, [serverHandoffComplete]);
+  react.exports.useEffect(function () {
+    if (state.serverHandoffComplete === false) state.serverHandoffComplete = true;
+  }, []);
+  return serverHandoffComplete;
+}
+
+// didn't take care of the Suspense case. To fix this we used the approach the @reach-ui/auto-id
+// uses.
+//
+// Credits: https://github.com/reach/reach-ui/blob/develop/packages/auto-id/src/index.tsx
+
+var id = 0;
+
+function generateId() {
+  return ++id;
+}
+
+function useId() {
+  var ready = useServerHandoffComplete();
+
+  var _useState = react.exports.useState(ready ? generateId : null),
+      _useState2 = _slicedToArray(_useState, 2),
+      id = _useState2[0],
+      setId = _useState2[1];
+
+  useIsoMorphicEffect(function () {
+    if (id === null) setId(generateId());
+  }, [id]);
+  return id != null ? '' + id : undefined;
+}
+
+function _createForOfIteratorHelper$1(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray$1(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray$1(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray$1(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray$1(o, minLen); }
+
+function _arrayLikeToArray$1(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+var Optional = Symbol();
+function useSyncRefs() {
+  for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
+    refs[_key] = arguments[_key];
+  }
+
+  var cache = react.exports.useRef(refs);
+  react.exports.useEffect(function () {
+    cache.current = refs;
+  }, [refs]);
+  var syncRefs = react.exports.useCallback(function (value) {
+    var _iterator = _createForOfIteratorHelper$1(cache.current),
+        _step;
+
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done;) {
+        var ref = _step.value;
+        if (ref == null) continue;
+        if (typeof ref === 'function') ref(value);else ref.current = value;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+  }, [cache]);
+  return refs.every(function (ref) {
+    return ref == null || ( // @ts-expect-error
+    ref === null || ref === void 0 ? void 0 : ref[Optional]);
+  }) ? undefined : syncRefs;
+}
+
+function match(value, lookup) {
+  if (value in lookup) {
+    var returnValue = lookup[value];
+
+    for (var _len = arguments.length, args = new Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+      args[_key - 2] = arguments[_key];
+    }
+
+    return typeof returnValue === 'function' ? returnValue.apply(void 0, args) : returnValue;
+  }
+
+  var error = new Error("Tried to handle \"".concat(value, "\" but there is no handler defined. Only defined handlers are: ").concat(Object.keys(lookup).map(function (key) {
+    return "\"".concat(key, "\"");
+  }).join(', '), "."));
+  if (Error.captureStackTrace) Error.captureStackTrace(error, match);
+  throw error;
+}
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+var Features;
+
+(function (Features) {
+  /** No features at all */
+  Features[Features["None"] = 0] = "None";
+  /**
+   * When used, this will allow us to use one of the render strategies.
+   *
+   * **The render strategies are:**
+   *    - **Unmount**   _(Will unmount the component.)_
+   *    - **Hidden**    _(Will hide the component using the [hidden] attribute.)_
+   */
+
+  Features[Features["RenderStrategy"] = 1] = "RenderStrategy";
+  /**
+   * When used, this will allow the user of our component to be in control. This can be used when
+   * you want to transition based on some state.
+   */
+
+  Features[Features["Static"] = 2] = "Static";
+})(Features || (Features = {}));
+
+var RenderStrategy;
+
+(function (RenderStrategy) {
+  RenderStrategy[RenderStrategy["Unmount"] = 0] = "Unmount";
+  RenderStrategy[RenderStrategy["Hidden"] = 1] = "Hidden";
+})(RenderStrategy || (RenderStrategy = {}));
+
+function render(_ref) {
+  var ourProps = _ref.ourProps,
+      theirProps = _ref.theirProps,
+      slot = _ref.slot,
+      defaultTag = _ref.defaultTag,
+      features = _ref.features,
+      _ref$visible = _ref.visible,
+      visible = _ref$visible === void 0 ? true : _ref$visible,
+      name = _ref.name;
+  console.log('\n\n\n------------- render Component -------------');
+  console.log('render Component ,name ::', name);
+  console.log('slot ::', slot);
+  console.log('defaultTag ::', defaultTag);
+  console.log('ourProps ::', ourProps);
+  console.log('theirProps ::', theirProps);
+  console.log('features ::', features);
+  console.log('\n\n\n------------- render Component end-------------');
+  var props = mergeProps(theirProps, ourProps); // Visible always render
+
+  if (visible) return _render(props, slot, defaultTag, name);
+  var featureFlags = features !== null && features !== void 0 ? features : Features.None;
+
+  if (featureFlags & Features.Static) {
+    var _a = props,
+        _a$static = _a.static,
+        isStatic = _a$static === void 0 ? false : _a$static,
+        rest = __rest(_a, ["static"]); // When the `static` prop is passed as `true`, then the user is in control, thus we don't care about anything else
+
+
+    if (isStatic) return _render(rest, slot, defaultTag, name);
+  }
+
+  if (featureFlags & Features.RenderStrategy) {
+    var _match;
+
+    var _b = props,
+        _b$unmount = _b.unmount,
+        unmount = _b$unmount === void 0 ? true : _b$unmount,
+        _rest = __rest(_b, ["unmount"]);
+
+    var strategy = unmount ? RenderStrategy.Unmount : RenderStrategy.Hidden;
+    return match(strategy, (_match = {}, _defineProperty(_match, RenderStrategy.Unmount, function () {
+      return null;
+    }), _defineProperty(_match, RenderStrategy.Hidden, function () {
+      return _render(Object.assign(Object.assign({}, _rest), {
+        hidden: true,
+        style: {
+          display: 'none'
+        }
+      }), slot, defaultTag, name);
+    }), _match));
+  } // No features enabled, just render
+
+
+  return _render(props, slot, defaultTag, name);
+}
+
+function _render(props) {
+  var slot = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  var tag = arguments.length > 2 ? arguments[2] : undefined;
+  var name = arguments.length > 3 ? arguments[3] : undefined;
+
+  var _a = omit(props, ['unmount', 'static']),
+      _a$as = _a.as,
+      Component = _a$as === void 0 ? tag : _a$as,
+      children = _a.children,
+      _a$refName = _a.refName,
+      refName = _a$refName === void 0 ? 'ref' : _a$refName,
+      rest = __rest(_a, ["as", "children", "refName"]); // console.log('render() ,tag::',tag,' -> children ::',children)
+  // console.log('render() ,as ::', Component )
+  // This allows us to use `<HeadlessUIComponent as={MyComponent} refName="innerRef" />`
+
+
+  var refRelatedProps = props.ref !== undefined ? _defineProperty({}, refName, props.ref) : {};
+  var resolvedChildren = typeof children === 'function' ? children(slot) : children;
+  console.log('render() ,resolvedChildren ::', resolvedChildren); // Allow for className to be a function with the slot as the contents
+
+  if (rest.className && typeof rest.className === 'function') {
+    rest.className = rest.className(slot);
+  }
+
+  if (Component === react.exports.Fragment) {
+    if (Object.keys(compact(rest)).length > 0) {
+      if (! /*#__PURE__*/react.exports.isValidElement(resolvedChildren) || Array.isArray(resolvedChildren) && resolvedChildren.length > 1) {
+        throw new Error(['Passing props on "Fragment"!', '', "The current component <".concat(name, " /> is rendering a \"Fragment\"."), "However we need to passthrough the following props:", Object.keys(rest).map(function (line) {
+          return "  - ".concat(line);
+        }).join('\n'), '', 'You can apply a few solutions:', ['Add an `as="..."` prop, to ensure that we render an actual element instead of a "Fragment".', 'Render a single element as the child so that we can forward the props onto that element.'].map(function (line) {
+          return "  - ".concat(line);
+        }).join('\n')].join('\n'));
+      }
+
+      return /*#__PURE__*/react.exports.cloneElement(resolvedChildren, Object.assign({}, // Filter out undefined values so that they don't override the existing values
+      mergeProps(resolvedChildren.props, compact(omit(rest, ['ref']))), refRelatedProps));
+    }
+  }
+
+  return /*#__PURE__*/react.exports.createElement(Component, Object.assign({}, omit(rest, ['ref']), Component !== react.exports.Fragment && refRelatedProps), resolvedChildren);
+}
+
+function mergeProps() {
+  var _a;
+
+  for (var _len = arguments.length, listOfProps = new Array(_len), _key = 0; _key < _len; _key++) {
+    listOfProps[_key] = arguments[_key];
+  }
+
+  if (listOfProps.length === 0) return {};
+  if (listOfProps.length === 1) return listOfProps[0];
+  var target = {};
+  var eventHandlers = {};
+
+  for (var _i = 0, _listOfProps = listOfProps; _i < _listOfProps.length; _i++) {
+    var props = _listOfProps[_i];
+
+    for (var prop in props) {
+      // Collect event handlers
+      if (prop.startsWith('on') && typeof props[prop] === 'function') {
+        (_a = eventHandlers[prop]) !== null && _a !== void 0 ? _a : eventHandlers[prop] = [];
+        eventHandlers[prop].push(props[prop]);
+      } else {
+        // Override incoming prop
+        target[prop] = props[prop];
+      }
+    }
+  } // Do not attach any event handlers when there is a `disabled` or `aria-disabled` prop set.
+
+
+  if (target.disabled || target['aria-disabled']) {
+    return Object.assign(target, // Set all event listeners that we collected to `undefined`. This is
+    // important because of the `cloneElement` from above, which merges the
+    // existing and new props, they don't just override therefore we have to
+    // explicitly nullify them.
+    Object.fromEntries(Object.keys(eventHandlers).map(function (eventName) {
+      return [eventName, undefined];
+    })));
+  } // Merge event handlers
+
+
+  var _loop = function _loop(eventName) {
+    Object.assign(target, _defineProperty({}, eventName, function (event) {
+      var handlers = eventHandlers[eventName];
+
+      var _iterator = _createForOfIteratorHelper(handlers),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var handler = _step.value;
+          if (event.defaultPrevented) return;
+          handler(event);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+    }));
+  };
+
+  for (var eventName in eventHandlers) {
+    _loop(eventName);
+  }
+
+  return target;
+}
+/**
+ * This is a hack, but basically we want to keep the full 'API' of the component, but we do want to
+ * wrap it in a forwardRef so that we _can_ passthrough the ref
+ */
+
+
+function forwardRefWithAs(component) {
+  var _a;
+
+  return Object.assign( /*#__PURE__*/react.exports.forwardRef(component), {
+    displayName: (_a = component.displayName) !== null && _a !== void 0 ? _a : component.name
+  });
+}
+function compact(object) {
+  var clone = Object.assign({}, object);
+
+  for (var key in clone) {
+    if (clone[key] === undefined) delete clone[key];
+  }
+
+  return clone;
+}
+
+function omit(object) {
+  var keysToOmit = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
+  var clone = Object.assign({}, object);
+
+  var _iterator2 = _createForOfIteratorHelper(keysToOmit),
+      _step2;
+
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var key = _step2.value;
+      if (key in clone) delete clone[key];
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+
+  return clone;
+}
+
+var _reducers;
+
+var ActionTypes;
+
+(function (ActionTypes) {
+  ActionTypes[ActionTypes["SetDisabled"] = 0] = "SetDisabled";
+  ActionTypes[ActionTypes["SetIsLoading"] = 1] = "SetIsLoading"; //newly addded
+
+  ActionTypes[ActionTypes["SetToggle"] = 2] = "SetToggle";
+})(ActionTypes || (ActionTypes = {}));
+
+var reducer = function reducer(state, action) {
+  return match(action.type, reducers, state, action);
+};
+
+var reducers = (_reducers = {}, _defineProperty(_reducers, ActionTypes.SetDisabled, function (state) {
+  return Object.assign(Object.assign({}, state), {
+    disable: !state.disable
+  });
+}), _defineProperty(_reducers, ActionTypes.SetIsLoading, function (state) {
+  return Object.assign(Object.assign({}, state), {
+    isLoading: !state.isLoading
+  });
+}), _defineProperty(_reducers, ActionTypes.SetToggle, function (state) {
+  return Object.assign(Object.assign({}, state), {
+    toggle: !state.toggle
+  });
+}), _reducers); // const ButtonContext = React.createContext<[State, React.Dispatch<Action>] | null | any>(null);
+
+var ButtonContext = /*#__PURE__*/React.createContext(null);
+ButtonContext.displayName = 'ButtonContext';
+
+function useButtonContext(component) {
+  var context = React.useContext(ButtonContext);
+
+  if (context === null) {
+    var err = new Error("<".concat(component, " /> is missing a parent <Listbox /> component."));
+    if (Error.captureStackTrace) Error.captureStackTrace(err, useButtonContext);
+    throw err;
+  }
+
+  return context;
+}
+
+var DEFAULT_BUTTON_TAG = 'button'; // let ButtonRoot = forwardRefWithAs(function ButtonRoot(props: {
+//     disable?: boolean,
+//     onClick?: React.MouseEventHandler<HTMLButtonElement>,
+//     isLoading?: boolean,
+//     name?: string,
+//     value?:any,
+//     children?:React.ReactNode // <-- strict API
+//     // style?:React.ReactNode
+// }, ref: React.Ref<any>
+// ) {
+
+var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
+  props.value;
+      props.name;
+      var _props$isLoading = props.isLoading,
+      isLoading = _props$isLoading === void 0 ? false : _props$isLoading,
+      _props$disable = props.disable,
+      disable = _props$disable === void 0 ? false : _props$disable,
+      toggle = props.toggle,
+      theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]);
+
+  var buttonMoleculeRef = useSyncRefs(ref);
+  var reducerBag = React.useReducer(reducer, {
+    isLoading: isLoading,
+    disable: disable,
+    toggle: false,
+    // buttonRef: React.createRef(),
+    labelRef: /*#__PURE__*/React.createRef(),
+    iconRef: /*#__PURE__*/React.createRef(),
+    propsRef: {
+      current: {}
+    }
+  });
+
+  var _reducerBag = _slicedToArray(reducerBag, 2),
+      state = _reducerBag[0],
+      dispatch = _reducerBag[1];
+
+  useIsoMorphicEffect(function () {
+    // skip initial render
+    return function () {
+      // do something with dependency    
+      dispatch({
+        type: ActionTypes.SetDisabled
+      });
+      dispatch({
+        type: ActionTypes.SetIsLoading
+      });
+    };
+  }, [isLoading]);
+  useIsoMorphicEffect(function () {
+    dispatch({
+      type: ActionTypes.SetToggle
+    });
+  }, [toggle]);
+  var ourProps = {
+    ref: buttonMoleculeRef,
+    disabled: props.disabled ? props.disabled : state.disable,
+    style: state.disable ? Object.assign(Object.assign({}, props.style), {
+      opacity: 0.6
+    }) : props.style
+  };
+  var slot = null;
+  var renderConfiguration = {
+    ourProps: ourProps,
+    theirProps: theirProps,
+    slot: slot,
+    defaultTag: DEFAULT_BUTTON_TAG,
+    name: 'Button'
+  };
+  return /*#__PURE__*/React.createElement(ButtonContext.Provider, {
+    value: reducerBag
+  }, render(renderConfiguration));
+});
+var DEFAULT_LABEL_TAG = 'label';
+var Label = forwardRefWithAs(function Label(props, ref) {
+  var id = "headlessdyno-button-label-".concat(useId());
+  props.disable;
+
+  var _useButtonContext = useButtonContext('Button.Label'),
+      _useButtonContext2 = _slicedToArray(_useButtonContext, 1),
+      state = _useButtonContext2[0];
+
+  var labelRef = useSyncRefs(state.labelRef, ref);
+  var theirProps = props;
+  var ourProps = {
+    ref: labelRef,
+    id: id,
+    children: (state === null || state === void 0 ? void 0 : state.disable) ? 'Loading' : props.children // onClick: handleClick 
+
+  };
+  var slot = null;
+  return render({
+    ourProps: ourProps,
+    theirProps: theirProps,
+    slot: slot,
+    defaultTag: DEFAULT_LABEL_TAG,
+    name: 'Button.Label'
+  });
+});
+var DEFAULT_ICON_TAG = 'i';
+var Icon = forwardRefWithAs(function Icon(props, ref) {
+  var id = "headlessdyno-button-i-".concat(useId());
+
+  var _useButtonContext3 = useButtonContext('Button.Icon'),
+      _useButtonContext4 = _slicedToArray(_useButtonContext3, 1),
+      state = _useButtonContext4[0];
+
+  var iconRef = useSyncRefs(state.iconRef, ref);
+  var theirProps = props;
+  var ourProps = {
+    ref: iconRef,
+    id: id,
+    children: (state === null || state === void 0 ? void 0 : state.disable) ? null : props.children // onClick: handleClick 
+
+  };
+  var slot = null;
+  return render({
+    ourProps: ourProps,
+    theirProps: theirProps,
+    slot: slot,
+    defaultTag: DEFAULT_ICON_TAG,
+    name: 'Button.Icon'
+  });
+});
+var ButtonMolecule = Object.assign(ButtonRoot, {
+  Label: Label,
+  Icon: Icon
+});
+
+export { Button, ButtonMolecule as HButton };
 //# sourceMappingURL=index.js.map

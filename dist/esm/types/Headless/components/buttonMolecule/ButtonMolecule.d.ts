@@ -1,8 +1,4 @@
-/// <reference types="react" />
 import React from 'react';
-
-declare const Button: (props: any) => JSX.Element;
-
 declare const _default: ((props: any, ref: React.Ref<any>) => JSX.Element) & {
     displayName: string;
 } & {
@@ -13,5 +9,4 @@ declare const _default: ((props: any, ref: React.Ref<any>) => JSX.Element) & {
         displayName: string;
     };
 };
-
-export { Button, _default as HButton };
+export default _default;
