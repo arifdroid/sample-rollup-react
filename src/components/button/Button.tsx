@@ -8,7 +8,7 @@ const Button = (props:any) => {
   const { action, label } = item || { label: 'Default' };
 
   const onClick = () => managedCallback(action?.actionURL)
-  const disabled = error && Object.keys(error).length > 0 || false;
+  const disabled = error && Object.keys(error).length > 0 || props?.disabled;
 
 
   const className = disabled ? styles['button-disabled'] : styles['button'];
