@@ -2869,10 +2869,10 @@ var css_248z = "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSyst
 styleInject(css_248z);
 
 var Button = function Button(props) {
-  var _useState = react.exports.useState(''),
-      _useState2 = _slicedToArray(_useState, 2);
-      _useState2[0];
-      _useState2[1];
+  var _React$useState = React.useState(''),
+      _React$useState2 = _slicedToArray(_React$useState, 2);
+      _React$useState2[0];
+      _React$useState2[1];
 
   var name = props.name,
       id = props.id,
