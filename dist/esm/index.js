@@ -3345,9 +3345,9 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
       _props$disable = props.disable,
       disable = _props$disable === void 0 ? false : _props$disable,
       toggle = props.toggle,
-      theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]); // let buttonMoleculeRef = useSyncRefs(ref)
+      theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]);
 
-
+  var buttonMoleculeRef = useSyncRefs(ref);
   var reducerBag = React.useReducer(reducer, {
     isLoading: isLoading,
     disable: disable,
@@ -3382,7 +3382,7 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
     });
   }, [toggle]);
   var ourProps = {
-    // ref: buttonMoleculeRef,
+    ref: buttonMoleculeRef,
     disabled: props.disabled ? props.disabled : state.disable,
     style: state.disable ? Object.assign(Object.assign({}, props.style), {
       opacity: 0.6
@@ -3409,12 +3409,12 @@ var Label = forwardRefWithAs(function Label(props, ref) {
       _useButtonContext2 = _slicedToArray(_useButtonContext, 1),
       state = _useButtonContext2[0];
 
-  var labelRef = useSyncRefs(state === null || state === void 0 ? void 0 : state.labelRef, ref);
+  var labelRef = useSyncRefs(state.labelRef, ref);
   var theirProps = props;
   var ourProps = {
     ref: labelRef,
     id: id,
-    children: (state === null || state === void 0 ? void 0 : state.disable) ? 'Loading s' : props.children // onClick: handleClick 
+    children: (state === null || state === void 0 ? void 0 : state.disable) ? 'Loadings s' : props.children // onClick: handleClick 
 
   };
   var slot = null;
@@ -3434,7 +3434,7 @@ var Icon = forwardRefWithAs(function Icon(props, ref) {
       _useButtonContext4 = _slicedToArray(_useButtonContext3, 1),
       state = _useButtonContext4[0];
 
-  var iconRef = useSyncRefs(state === null || state === void 0 ? void 0 : state.iconRef, ref);
+  var iconRef = useSyncRefs(state.iconRef, ref);
   var theirProps = props;
   var ourProps = {
     ref: iconRef,
@@ -3456,5 +3456,12 @@ var ButtonMolecule = Object.assign(ButtonRoot, {
   Icon: Icon
 });
 
-export { Button, ButtonMolecule as HButton };
+var SampleMolecule = /*#__PURE__*/react.exports.forwardRef(function (props, ref) {
+  return /*#__PURE__*/React.createElement("div", {
+    ref: ref
+  }, "Sample Molecule");
+});
+var SampleMolecule$1 = Object.assign(SampleMolecule);
+
+export { Button, ButtonMolecule as HButton, SampleMolecule$1 as HSample };
 //# sourceMappingURL=index.js.map

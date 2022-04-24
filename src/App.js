@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Button, HButton } from './components'
+import { Button, HButton, HSample } from './components'
 function App() {
   return (
     <div className="App">
@@ -17,10 +17,11 @@ function App() {
 
         </a>
         {/* <Button>Button Library</Button> */}
-        <HButton>
+        {/* <HButton>
           <HButton.Label >Label 2 </HButton.Label>
           <HButton.Icon></HButton.Icon>
-        </HButton>
+        </HButton> */}
+        <HSample/>
       </header>
     </div>
   );

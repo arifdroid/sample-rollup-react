@@ -91,7 +91,7 @@ let ButtonRoot = forwardRefWithAs(function ButtonRoot(props: any, ref: React.Ref
 ) {
     let { value, name, isLoading = false, disable = false, toggle, ...theirProps } = props;
 
-    // let buttonMoleculeRef = useSyncRefs(ref)
+    let buttonMoleculeRef = useSyncRefs(ref)
 
     let reducerBag = React.useReducer(reducer, {
         isLoading,
@@ -124,7 +124,7 @@ let ButtonRoot = forwardRefWithAs(function ButtonRoot(props: any, ref: React.Ref
     }, [toggle])
 
     let ourProps = {
-        // ref: buttonMoleculeRef,
+        ref: buttonMoleculeRef,
         disabled: props.disabled ? props.disabled : state.disable,
         style: state.disable ? { ...props.style, opacity: 0.6 } : props.style
     }
@@ -165,7 +165,7 @@ let Label = forwardRefWithAs(function Label<
     let { disable = false, } = props;
     let [state] = useButtonContext('Button.Label')
 
-    let labelRef = useSyncRefs(state?.labelRef, ref)
+    let labelRef = useSyncRefs(state.labelRef, ref)
 
 
     let theirProps = props
@@ -173,7 +173,7 @@ let Label = forwardRefWithAs(function Label<
     let ourProps = {
         ref: labelRef,
         id,
-        children: state?.disable ? 'Loading s' : props.children
+        children: state?.disable ? 'Loadings s' : props.children
         // onClick: handleClick 
     };
 
@@ -203,7 +203,7 @@ let Icon = forwardRefWithAs(function Icon<
     let id = `headlessdyno-button-i-${useId()}`
     let [state] = useButtonContext('Button.Icon')
 
-    let iconRef = useSyncRefs(state?.iconRef, ref)
+    let iconRef = useSyncRefs(state.iconRef, ref)
 
     let theirProps = props
     let ourProps = {
