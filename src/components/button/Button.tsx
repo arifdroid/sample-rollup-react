@@ -1,12 +1,30 @@
 import React from "react";
 import styles from './Button.module.scss';
-// import './Button.css';
-
+import '../../index.css';
 
 const Button = (props:any) => {
-    return (
-        <button className={styles.button} {...props}></button>
-    )
-}
+
+  const { name, id, item, error, managedCallback, } = props;
+  const { action, label } = item || { label: 'Default' };
+
+  const onClick = () => managedCallback(action?.actionURL)
+  const disabled = error && Object.keys(error).length > 0 || false;
+
+
+  const className = disabled ? styles['button-disabled'] : styles['button'];
+
+  return (
+    <button
+      name={name}
+      id={id}
+      className={className}
+      disabled={disabled}
+      onClick={onClick}
+      {...props}
+    >
+      {label}
+    </button>);
+
+};
 
 export default Button;

@@ -2826,14 +2826,39 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".Button-module_button__P7hTI {\n  background-color: rgb(255, 221, 0);\n  border: solid 1px rgb(255, 221, 0);\n  border-radius: 8px;\n  height: 38px;\n  width: 112px;\n  font-family: \"Rubik\", sans-serif;\n  color: rgba(98, 98, 98, 0.744);\n  text-align: center;\n  font-size: 14px;\n  font-weight: 900;\n  text-decoration: none;\n  display: inline-block;\n  cursor: pointer;\n}";
-var styles = {"button":"Button-module_button__P7hTI"};
+var css_248z$1 = ".Button-module_button__P7hTI {\n  background-color: rgb(255, 221, 0);\n  border: solid 1px rgb(255, 221, 0);\n  border-radius: 8px;\n  height: 38px;\n  width: 112px;\n  font-family: \"Rubik\", sans-serif;\n  color: rgb(14, 27, 66);\n  text-align: center;\n  font-size: 14px;\n  font-weight: 500;\n  text-decoration: none;\n  display: inline-block;\n  cursor: pointer;\n}\n\n.Button-module_button-disabled__xn0A7 {\n  opacity: 0.35;\n  background-color: rgb(255, 221, 0);\n  border: solid 1px rgb(255, 221, 0);\n  border-radius: 8px;\n  height: 38px;\n  width: 112px;\n  font-family: \"Rubik\", sans-serif;\n  color: rgb(14, 27, 66);\n  text-align: center;\n  font-size: 14px;\n  font-weight: 500;\n  text-decoration: none;\n  display: inline-block;\n  cursor: not-allowed;\n}";
+var styles = {"button":"Button-module_button__P7hTI","button-disabled":"Button-module_button-disabled__xn0A7"};
+styleInject(css_248z$1);
+
+var css_248z = "body {\n  margin: 0;\n  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',\n    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',\n    sans-serif;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\ncode {\n  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',\n    monospace;\n}\n";
 styleInject(css_248z);
 
 var Button = function Button(props) {
+  var name = props.name,
+      id = props.id,
+      item = props.item,
+      error = props.error,
+      managedCallback = props.managedCallback;
+
+  var _a = item || {
+    label: 'Default'
+  },
+      action = _a.action,
+      label = _a.label;
+
+  var onClick = function onClick() {
+    return managedCallback(action === null || action === void 0 ? void 0 : action.actionURL);
+  };
+
+  var disabled = error && Object.keys(error).length > 0 || false;
+  var className = disabled ? styles['button-disabled'] : styles['button'];
   return /*#__PURE__*/React.createElement("button", __assign({
-    className: styles.button
-  }, props));
+    name: name,
+    id: id,
+    className: className,
+    disabled: disabled,
+    onClick: onClick
+  }, props), label);
 };
 
 export { Button };
