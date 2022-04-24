@@ -1,24 +1,54 @@
 {
   "compilerOptions": {
-    // Default
+    "module": "esnext",
     "target": "es6",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true,
-    "allowJs": true,
-    // Added
-    "jsx": "react",
-    "module": "ESNext",
-    "declaration": true,
-    "declarationDir": "types",
+    "lib": [
+      "es6",
+      "dom"
+    ],
     "sourceMap": true,
-    "outDir": "dist",
+    "jsx": "react",
     "moduleResolution": "node",
-    "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true,
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "downlevelIteration": true
-
-  }
+    // "rootDir": "src",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "allowJs": true,
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "types"
+    // "baseUrl": "src/",
+    // "paths": {
+    //   "common/*": [
+    //     "common/*"
+    //   ],
+    //   "components/*": [
+    //     "components/*"
+    //   ],
+    //   "hooks/*": [
+    //     "hooks/*"
+    //   ],
+    //   "utils/*": [
+    //     "utils/*"
+    //   ],
+    //   "styles/*": [
+    //     "styles/*"
+    //   ]
+    // }
+  },
+  "exclude": [
+    "node_modules",
+    "build",
+    "dist",
+    "scripts",
+    "acceptance-tests",
+    "webpack",
+    "jest"
+  ],
+  // "types": [
+  //   "typePatches"
+  // ]
 }
