@@ -3293,7 +3293,7 @@ var ActionTypes;
   ActionTypes[ActionTypes["SetToggle"] = 2] = "SetToggle";
 })(ActionTypes || (ActionTypes = {}));
 
-var reducer = function reducer(state, action) {
+var reducer$1 = function reducer(state, action) {
   return match(action.type, reducers, state, action);
 };
 
@@ -3348,7 +3348,7 @@ var ButtonRoot = forwardRefWithAs(function ButtonRoot(props, ref) {
       theirProps = __rest(props, ["value", "name", "isLoading", "disable", "toggle"]);
 
   var buttonMoleculeRef = useSyncRefs(ref);
-  var reducerBag = React.useReducer(reducer, {
+  var reducerBag = React.useReducer(reducer$1, {
     isLoading: isLoading,
     disable: disable,
     toggle: false,
@@ -3456,10 +3456,61 @@ var ButtonMolecule = Object.assign(ButtonRoot, {
   Icon: Icon
 });
 
+var ACTIONS = {
+  INCREMENT: 'increment',
+  DECREMENT: 'decrement'
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return Object.assign(Object.assign({}, state), {
+        count: state.count + 1
+      });
+
+    case 'decrement':
+      return Object.assign(Object.assign({}, state), {
+        count: state.count - 1
+      });
+  }
+}
+
 var SampleMolecule = /*#__PURE__*/react.exports.forwardRef(function (props, ref) {
+  var _useState = react.exports.useState(''),
+      _useState2 = _slicedToArray(_useState, 2);
+      _useState2[0];
+      _useState2[1];
+
+  var _useReducer = react.exports.useReducer(reducer, {
+    count: 0
+  }),
+      _useReducer2 = _slicedToArray(_useReducer, 2),
+      state = _useReducer2[0],
+      dispatch = _useReducer2[1];
+
   return /*#__PURE__*/React.createElement("div", {
     ref: ref
-  }, "Sample Molecule");
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: 20
+    }
+  }, "Simple Reducer Pattern"), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: ACTIONS.DECREMENT
+      });
+    }
+  }, "-"), /*#__PURE__*/React.createElement("span", {
+    style: {
+      padding: 10
+    }
+  }, state === null || state === void 0 ? void 0 : state.count), /*#__PURE__*/React.createElement("button", {
+    onClick: function onClick() {
+      return dispatch({
+        type: ACTIONS.INCREMENT
+      });
+    }
+  }, "+"));
 });
 var SampleMolecule$1 = Object.assign(SampleMolecule);
 
