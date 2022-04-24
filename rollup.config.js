@@ -10,11 +10,11 @@ export default [
   {
     input: "src/components/index.ts",
     output: [
-      {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true,
-      },
+      // {
+      //   file: packageJson.main,
+      //   format: "cjs",
+      //   sourcemap: true,
+      // },
       {
         file: packageJson.module,
         format: "esm",
@@ -33,11 +33,11 @@ export default [
       postcss()
     ],
   },
-  {
-    input: "dist/esm/types/index.d.ts",
-    output: [{ file: "dist/index.d.ts", format: "esm" }],
-    plugins: [dts()],
-    external: [/\.css$/],
+  // {
+  //   input: "dist/esm/types/index.d.ts",
+  //   output: [{ file: "dist/index.d.ts", format: "esm" }],
+  //   plugins: [dts()],
+  //   external: [/\.css$/],
 
-  },
+  // },
 ];
