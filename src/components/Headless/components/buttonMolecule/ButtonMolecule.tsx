@@ -1,4 +1,4 @@
-import React, { createContext, createRef, Dispatch, Fragment, MutableRefObject, Ref, useCallback, useContext, useMemo, useReducer } from 'react'
+import React from 'react'
 import { useId } from '../../hooks/use-id';
 import { useIsoMorphicEffect } from '../../hooks/use-iso-morphic-effect';
 import { useSyncRefs } from '../../hooks/use-sync-refs';
@@ -165,7 +165,7 @@ let Label = forwardRefWithAs(function Label<
     let { disable = false, } = props;
     let [state] = useButtonContext('Button.Label')
 
-    let labelRef = useSyncRefs(state.labelRef, ref)
+    let labelRef = useSyncRefs(state?.labelRef, ref)
 
 
     let theirProps = props
@@ -173,7 +173,7 @@ let Label = forwardRefWithAs(function Label<
     let ourProps = {
         ref: labelRef,
         id,
-        children: state?.disable ? 'Loading' : props.children
+        children: state?.disable ? 'Loading s' : props.children
         // onClick: handleClick 
     };
 
@@ -203,7 +203,7 @@ let Icon = forwardRefWithAs(function Icon<
     let id = `headlessdyno-button-i-${useId()}`
     let [state] = useButtonContext('Button.Icon')
 
-    let iconRef = useSyncRefs(state.iconRef, ref)
+    let iconRef = useSyncRefs(state?.iconRef, ref)
 
     let theirProps = props
     let ourProps = {
